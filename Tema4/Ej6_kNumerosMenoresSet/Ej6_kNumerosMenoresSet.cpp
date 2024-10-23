@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// Complejidad O(i*log n)
+// Complejidad O(k* i)
 // n: nelems de set
 // i: num elems del vector datos
 // k: cantidad de numeros mas pequeños que se piden
@@ -23,16 +23,16 @@ Set<int> resolver(vector<int>& datos, int k) {
 	while (i < datos.size()) {
 		// Añado los primeros k elementos diferentes
 		if (i < k) {
-			if (!set.contains(datos[i])) // O(log n)
-				set.add(datos[i]); // O(log n)
+			if (!set.contains(datos[i])) // O(log k)
+				set.add(datos[i]); // O(k)
 			else
 				k++;
 		}
 		// Si alguno de los siguientes es menor lo añado
 		else {
-			if (datos[i] < set.getMax() && !set.contains(datos[i])) { // O(log n), n = nelems
+			if (datos[i] < set.getMax() && !set.contains(datos[i])) { // O(log k), no va a tener + de k elementos
 				set.removeMax(); // O(1)
-				set.add(datos[i]); // O(log n), n = nelems
+				set.add(datos[i]); // O(k), no va a tener + de k elementos
 			}
 		}
 		i++;

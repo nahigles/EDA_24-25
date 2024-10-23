@@ -9,7 +9,7 @@
 
 
 // función que resuelve el problema
-TipoSolucion resolver(TipoDatos datos) {
+TipoSolucion equilibrado(TipoDatos datos) {
     
     
 }
@@ -22,7 +22,7 @@ bool resuelveCaso() {
     if (! std::cin)
         return false;
     
-    TipoSolucion sol = resolver(datos);
+    TipoSolucion sol = equilibrado(datos);
     
     // escribir sol
     

@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ej3_Polinomio", "Ej2_Polino
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ej2_HorasTren", "Ej2_HorasTren\Ej2_HorasTren.vcxproj", "{052B9E6D-D7ED-41BC-A5A5-15D851A0B23A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ej4_Peliculas", "Ej4_Peliculas\Ej4_Peliculas.vcxproj", "{5524C02A-613C-43AD-90A2-E04C66DB165D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{052B9E6D-D7ED-41BC-A5A5-15D851A0B23A}.Release|x64.Build.0 = Release|x64
 		{052B9E6D-D7ED-41BC-A5A5-15D851A0B23A}.Release|x86.ActiveCfg = Release|Win32
 		{052B9E6D-D7ED-41BC-A5A5-15D851A0B23A}.Release|x86.Build.0 = Release|Win32
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Debug|x64.ActiveCfg = Debug|x64
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Debug|x64.Build.0 = Debug|x64
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Debug|x86.ActiveCfg = Debug|Win32
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Debug|x86.Build.0 = Debug|Win32
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Release|x64.ActiveCfg = Release|x64
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Release|x64.Build.0 = Release|x64
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Release|x86.ActiveCfg = Release|Win32
+		{5524C02A-613C-43AD-90A2-E04C66DB165D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

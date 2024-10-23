@@ -17,31 +17,17 @@ using namespace std;
 // configuración, y escribiendo la respuesta
 bool resuelveCaso() {
 	// leer los datos de la entrada
-	int nTrenes, nConsultas;
-	cin >> nTrenes >> nConsultas;
+	int nPeliculas;
+	cin >> nPeliculas;
 
-	if (nTrenes == 0 && nConsultas == 0)
+	if (nPeliculas == 0)
 		return false;
-	Horas trenes;
-	string line;
-	for (int i = 0; i < nTrenes; i++) {
-		trenes.leer();
+	Horas peliculas;
+	for (int i = 0; i < nPeliculas; i++) {
+		peliculas.leer();
 	}
 
-	for (int i = 0; i < nConsultas; i++) {
-		Tiempo t;
-		char c;
-		cin >> t.horas >> c >> t.minutos >> c >> t.segundos;
-		try
-		{
-			trenes.consultar(t);
-		}
-		catch (exception& e)
-		{
-			cout << "ERROR" << endl;;
-		}
-	}
-
+	peliculas.escribePeliculas();
 	// escribir sol
 	cout << "---" << endl;
 

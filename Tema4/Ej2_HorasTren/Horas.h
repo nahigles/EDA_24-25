@@ -21,7 +21,7 @@ protected:
 public:
 	Horas(){}
 
-	void leerHora() {
+	void leer() {
 		Tiempo t;
 		char c;
 		cin >> t.horas >> c >> t.minutos >> c >> t.segundos;
