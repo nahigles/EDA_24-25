@@ -13,21 +13,28 @@ class queue_plus : public queue<T> {
 	using Nodo = typename queue<T>::Nodo;
 
 public:
-	// Complejidad lineal en n, n= nelems de la pila
-	// T(n) --> O(n)
-	void duplica() {
+	// Complejidad lineal, T(n) => O(n) siendo n el numero de elementos de la cola - 1
+	void invertir() {
 
-		if (this->nelems > 0) {
+		if (this->nelems >= 2) {
+			Nodo* nAnt = nullptr;
+			Nodo* nAct = this->prim; // Primer elemento
+			Nodo* nSig = this->prim->sig; // Segundo elemento
 
-			Nodo* aux = this->prim;
+			while (nAct != nullptr) { // O(n-1)
+				// Cambio sig del nodo auxiliar del centro
+				nAct->sig = nAnt;
 
-			while (aux != nullptr) {
-				aux->sig = new Nodo(aux->elem, aux->sig);
-				this->nelems++;
-				aux = aux->sig->sig;
+				// Adelanto 1 los tres nodos auxiliares
+				nAnt = nAct;
+				nAct = nSig;
+				if (nSig != nullptr)
+					nSig = nSig->sig;
 			}
 
-			this->ult = this->ult->sig;
+			// Intercambio primero y ultimo
+			this->ult = this->prim;
+			this->prim = nAnt;
 		}
 
 	}
@@ -48,7 +55,7 @@ bool resuelveCaso() {
 	}
 
 	// llamada a metodo
-	q.duplica();
+	q.invertir();
 
 	// escribir sol (pero antes dar una vuelta para comprobar que la cola está bien formada)
 	for (int i = 0; i < q.size(); ++i) {
