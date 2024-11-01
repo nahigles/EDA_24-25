@@ -8,35 +8,18 @@
 using namespace std;
 
 
-template <class T>
-class list_plus : public list<T> {
-	using Nodo = typename list<T>::Nodo;
-
-public:
-	// Complejidad lineal en n, siendo n el numero de elementos de la lista
-	void elimina(const T e) {
-
-		Nodo* aux = this->fantasma->sig; // Primer elemeto de la lista
-
-		while (aux != this->fantasma) { // O(n), n = nelems
-
-			// Si es el numero lo borra
-			if (aux->elem == e) {
-				aux->ant->sig = aux->sig; // Nodo anterior de aux apuntando al siguiente de aux
-				aux->sig->ant = aux->ant; // Nodo sigguiente de aux apuntando al anterior de aux
-
-				// Nodo auxiliar para eleminar aux
-				Nodo* aux2 = aux->sig; 
-				delete aux;
-				aux = aux2;
-				this->nelems--;
-			}
-			// Avanzoo aux
-			else 
-				aux = aux->sig;
+// Complejidad lineal en n, siendo n el numero de elementos de la lista
+void ordena(list<int>& lista, const int& e) {
+	list <int>::iterator it = lista.begin();
+	while (it != lista.end()) {
+		if ((*it) == e) {
+			it = lista.erase(it);
 		}
+		else
+			++it;
 	}
-};
+}
+
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
@@ -44,7 +27,7 @@ void resuelveCaso() {
 	// Leo datos de entrada
 
 	// Guardo cola
-	list_plus<int> lista;
+	list<int> lista;
 	int e;
 	cin >> e;
 	while (e != -1) {
@@ -56,17 +39,17 @@ void resuelveCaso() {
 	cin >> e;
 
 	// Escribo lista sin cambios
-	for (list_plus <int>::iterator it = lista.begin(); it != lista.end(); ++it) {
+	for (list <int>::iterator it = lista.begin(); it != lista.end(); ++it) {
 		cout << (*it) << " ";
 	}
 	cout << endl;
 
 
 	// llamada a metodo
-	lista.elimina(e);
+	ordena(lista, e);
 
 	// escribir sol 
-	for (list_plus <int>::iterator it = lista.begin(); it != lista.end(); ++it) {
+	for (list <int>::iterator it = lista.begin(); it != lista.end(); ++it) {
 		cout << (*it) << " ";
 	}
 	cout << endl;
