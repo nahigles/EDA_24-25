@@ -6,14 +6,14 @@
 #include "bintree_eda.h"
 using namespace std;
 
-struct Rio
+struct Rescate
 {
     int numTramosNavegables;
     int caudal;
 };
 
 // Complejidad lineal respecto al numero de nodos del arbol, O(n) siendo n numero de nodos(Recorro en postorden todo el arbol)
-Rio cuentaTramosNav(const bintree<int>& t) {
+Rescate rescate(const bintree<int>& t) {
     if (!t.empty()) {
 
         // si es hoja
@@ -22,8 +22,8 @@ Rio cuentaTramosNav(const bintree<int>& t) {
         }
         else {
 
-            Rio izq = cuentaTramosNav(t.left());
-            Rio der = cuentaTramosNav(t.right());
+            Rescate izq = rescate(t.left());
+            Rescate der = rescate(t.right());
 
             if (izq.caudal >= 3)
                 izq.numTramosNavegables += 1;
@@ -47,7 +47,7 @@ Rio cuentaTramosNav(const bintree<int>& t) {
 void resuelveCaso() {
     bintree<int> arb;
     arb = leerArbol(-1); // -1 es la repr. de arbol vacio
-    int sol = cuentaTramosNav(arb).numTramosNavegables;
+    int sol = rescate(arb).numTramosNavegables;
 
     // Escribo salida
     cout << sol << endl;
