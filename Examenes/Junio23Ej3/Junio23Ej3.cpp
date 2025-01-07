@@ -45,6 +45,13 @@ inline std::ostream& operator<<(std::ostream& salida, Fecha const& f) {
 using Codigo = string;
 using Cliente = string;
 
+// Comentario profe:
+// Por otro lado no me termina de cuadrar como guardas las listas de espera.
+// No sería mejor guardar una lista de espera (que puede ser un queue por cierto)
+// asociada a cada producto? Harías un InfoProducto en el que tendrías la lista de
+// espera, el map de unidades por fecha y un entero con el nº de unidades totales
+// del producto (esto último para evitar el coste lineal de la operación cuantos!).
+
 class Tienda {
 private:
 	list<pair<Cliente, Codigo>> listaEspera; // Lista de espera
@@ -113,18 +120,19 @@ public:
 		// Si encuentra el codigo
 		if (itC != almacen.end()) {
 
-			auto itCodigoMap = (*itC).second; // Guardo iterador al mapa del codigo
+			map<Fecha, int>& codigoMap = itC->second;
+			//auto itCodigoMap = itC->second; // Guardo iterador al mapa del codigo
 
 			// Busca unidades del codigo en la primera fecha q encuentre (Porque estan ordenadas)
-			auto it = itCodigoMap.begin();
-			while (it != itCodigoMap.end() && !producto.first) {
+			auto it = codigoMap.begin();
+			while (it != codigoMap.end() && !producto.first) {
 
 				// Si hay unidades
-				if ((*it).second > 0) {
+				if (it->second > 0) {
 					producto.first = true;
 					producto.second = (*it).first; // Guardo fecha
 
-					(*it).second--; // Resta una unidad
+					it->second--; // Resta una unidad
 				}
 				// Si no hay existencias
 				else {
@@ -133,8 +141,8 @@ public:
 			}
 		}
 
+		// Si no se ha vendido
 		if (!producto.first) {
-
 			// Cliente a lista de espera
 			listaEspera.push_back({ cli, cod });
 		}
@@ -169,7 +177,7 @@ public:
 
 		auto it = listaEspera.begin();
 		while (it != listaEspera.end() && !esperando) {
-			
+
 			esperando = ((*it).second == cod);
 
 			++it;
